@@ -24,7 +24,7 @@
                         <li><a href="admin/user/sua/{{Auth::user()->id}}"><i class="fa fa-gear fa-fw"></i> Settings</a>
                         </li>
                         <li class="divider"></li>
-                        <li><a href="admin/logout"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+                        <li><a href="dangxuat"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
                         </li>
                         @endif
                     </ul>

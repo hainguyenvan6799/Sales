@@ -48,7 +48,12 @@
 						</a>
 						<div class="top-cart-content">					
 							<ul id="cart-sidebar" class="mini-products-list count_li">
-								<li class="list-item"><ul></ul></li>
+								<li class="list-item">
+									<ul>
+										<li>San pham 1</li>
+										<li>San pham 2</li>
+									</ul>
+								</li>
 								<li class="action">
 									<ul>
 										<li class="li-fix-1"><div class="top-subtotal">Tổng tiền thanh toán:<span class="price"></span></div></li>

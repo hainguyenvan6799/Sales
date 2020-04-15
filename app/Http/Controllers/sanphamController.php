@@ -7,6 +7,7 @@ use App\theloai;
 use App\loaisanpham;
 use App\sanpham;
 
+
 class sanphamController extends Controller
 {
     // thêm 1 sản phẩm vào danh sách
@@ -28,6 +29,7 @@ class sanphamController extends Controller
     	// );
     	$sanpham = new sanpham;
     	$sanpham->tensanpham = $request->txtTen;
+        $sanpham->tenkhongdau = $request->txtTenkhongdau;
     	$sanpham->gia = $request->txtGia;
     	$sanpham->mota = $request->txtMota;
     	$sanpham->id_loaisanpham = $request->txtloaisanpham;
@@ -75,6 +77,7 @@ class sanphamController extends Controller
     {
     	$sanpham = sanpham::find($id);
     	$sanpham->tensanpham = $request->txtTen;
+        $sanpham->tenkhongdau = $request->txtTenkhongdau;
     	$sanpham->gia = $request->txtGia;
     	$sanpham->mota = $request->txtMota;
     	if($request->hasFile('filehinh'))
@@ -100,6 +103,12 @@ class sanphamController extends Controller
     	}
     	$sanpham->save();
     	return redirect('admin/sanpham/sua/'. $id)->with('thongbao','Sửa sản phẩm thành công.');
+    }
+
+    public function detail_product($tenspkhongdau)
+    {
+        $detail_product = sanpham::where('tenkhongdau', $tenspkhongdau)->first();
+                return view('pages.detail-product', ['sp'=>$detail_product]);
     }
 
 }

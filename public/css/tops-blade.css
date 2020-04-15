@@ -8,3 +8,13 @@
 	color: white;
 	text-align: center;
 }
+.timsptheogia, .timsptheoloai
+{
+	font-size: 17px;
+	cursor: pointer;
+}
+
+.text1:hover{
+	color: red;
+}
+

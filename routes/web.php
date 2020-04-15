@@ -14,6 +14,8 @@ use App\theloai;
 use App\sanpham;
 $theloai = theloai::all();
 $sanpham = sanpham::all();
+session()->put('giohang');
+session()->put('soluongsanphamtronggiohang');
 
 Route::get('/', function () {
     return view('welcome');
@@ -21,6 +23,8 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+//trang chu
 Route::view('trangchu','pages.trangchu', ['theloai'=>$theloai]);
 
 
@@ -33,8 +37,10 @@ Route::post('dangky', 'userController@postDangky');
 Route::get('xacthuc', 'emailController@getXacthuc');
 Route::post('xacthuc', 'emailController@postXacthuc');
 
+Route::get('dangxuat', 'userController@dangxuat');
+
 //các chức năng admin
-Route::group(['prefix'=>'admin'], function(){
+Route::group(['prefix'=>'admin','middleware'=>'adminLogin'], function(){
 	Route::group(['prefix'=>'theloai'], function(){
 		//thêm vào danh sách thể loại
 		Route::get('them', 'theloaiController@getThem');
@@ -85,10 +91,28 @@ Route::group(['prefix'=>'admin'], function(){
 
 Route::view('them', 'admin.theloai.them');
 
+//filter san pham ao thun
 Route::view('aothun', 'pages.tops', ['sanpham'=>$sanpham]);
-
-Route::get('tops/{a}', 'ajaxController@sort');
 
 Route::get('test', 'ajaxController@test');
 
 Route::get('tops', 'ajaxController@filter_data');
+
+Route::get('tops/{tenspkhongdau}', 'sanphamController@detail_product');
+
+
+//test modal
+Route::get('modal_test', 'testController@openModal');
+
+Route::view('slideshow', 'tests.slideshow');
+
+Route::get('test', 'testController@test');
+
+//Kiểm tra số lượng sản phẩm còn hay hết
+Route::get('kiemtrasoluong/{idsp}/{sizevalue}', 'ajaxController@kiemtrasoluong');
+
+//gio hàng
+Route::get("giohang/{idsp}", 'ajaxController@giohang');
+
+//Xoa san pham trong gio hang
+Route::get('xoakhoigiohang/{idsp}', 'ajaxController@xoakhoigiohang');

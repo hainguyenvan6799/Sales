@@ -80,4 +80,9 @@ class userController extends Controller
         //session()->put('quyen', 1);
         return back()->with('success','Kiểm tra email để xác thực thông tin đăng ký.');
     }
+
+    public function dangxuat(){
+        Auth::logout();
+        return redirect('dangnhap');
+    }
 }

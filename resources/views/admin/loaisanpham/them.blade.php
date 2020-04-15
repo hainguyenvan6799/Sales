@@ -33,6 +33,11 @@
                                 <input class="form-control" name="txtTen" placeholder="Nhập tên loại sản phẩm." />
                             </div>
 
+                            <div class="form-group">
+                                <label>Tên không dấu</label>
+                                <input class="form-control" name="txtTenkhongdau" placeholder="Nhập tên loại sản phẩm." />
+                            </div>
+
 
                             <div class="form-group">
                                 <label>Tên thể loại</label>

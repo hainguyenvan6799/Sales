@@ -16,10 +16,12 @@ class loaisanphamController extends Controller
     public function postThem(Request $request){
     	$this->validate($request,
     		[
-    			'txtTen'=>'required'
+    			'txtTen'=>'required',
+                'txtTenkhongdau'=>'required'
     		],
     		[
-    			'txtTen.required'=>'Bạn cần nhập tên loại sản phẩm.'
+    			'txtTen.required'=>'Bạn cần nhập tên loại sản phẩm.',
+                'txtTenkhongdau.required'=>'Bạn cần điền tên không dấu.'
     		]
 
     	 );
@@ -44,15 +46,18 @@ class loaisanphamController extends Controller
     {
     	$this->validate($request, 
     		[
-    			'txtTen'=>'required'
+    			'txtTen'=>'required',
+                'txtTenkhongdau'=>'required'
     		],
     		[
-    			'txtTen.required'=>'Bạn cần điền tên loại sản phẩm.'
+    			'txtTen.required'=>'Bạn cần điền tên loại sản phẩm.',
+                'txtTenkhongdau.required'=>'Bạn cần điền tên không dấu.'
     		]
     	);
     	$loaisanpham = loaisanpham::find($id);
     	$loaisanpham->tenloaisanpham = $request->txtTen;
     	$loaisanpham->id_theloai = $request->id_theloai;
+        $loaisanpham->tenkhongdau = $request->txtTenkhongdau;
     	$loaisanpham->save();
     	return redirect('admin/loaisanpham/sua/'. $id)->with('thongbao', 'Bạn đã sửa loại sản phẩm thành công.');
     }

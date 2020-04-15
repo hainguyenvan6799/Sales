@@ -40,6 +40,11 @@
                             </div>
 
                             <div class="form-group">
+                                <label>Tên không dấu</label>
+                                <input class="form-control" name="txtTenkhongdau" placeholder="Nhập tên thể loại" />
+                            </div>
+
+                            <div class="form-group">
                                 <label>Hình đại diện</label>
                                 <input type="file" class="form-control" name="filehinh" />
                             </div>

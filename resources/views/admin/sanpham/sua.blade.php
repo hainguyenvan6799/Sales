@@ -24,6 +24,11 @@
                             </div>
 
                             <div class="form-group">
+                                <label>Tên không dấu</label>
+                                <input class="form-control" name="txtTenkhongdau" placeholder="Nhập tên sản phẩm" value="{{$sanpham->tenkhongdau}}" />
+                            </div>
+
+                            <div class="form-group">
                                 <label>Giá</label>
                                 <input class="form-control" name="txtGia" placeholder="Nhập giá sản phẩm" value="{{$sanpham->gia}}" />
                             </div>

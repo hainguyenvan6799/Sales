@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Http\Middleware;
+use Illuminate\Support\Facades\Auth;
+
 
 use Closure;
 
@@ -15,6 +17,21 @@ class adminlogin
      */
     public function handle($request, Closure $next)
     {
-    
+        if(Auth::check())
+        {
+            $user = Auth::user();
+            if($user->quyen == 1)
+            {
+                return $next($request);
+            }
+            else
+            {
+                return redirect('dangnhap');
+            }
+        }
+        else
+        {
+            return redirect('dangnhap');
+        }
     }
 }

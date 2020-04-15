@@ -34,6 +34,11 @@
                                 <input class="form-control" name="txtTen" placeholder="Nhập tên loại sản phẩm muốn chỉnh sửa..." value="{{$loaisanpham->tenloaisanpham}}" />
                             </div>
 
+                             <div class="form-group">
+                                <label>Tên không dấu</label>
+                                <input class="form-control" name="txtTenkhongdau" placeholder="Nhập tên loại sản phẩm muốn chỉnh sửa..." value="{{$loaisanpham->tenkhongdau}}" />
+                            </div>
+
                             <div class="form-group">
                                 <label>Tên thể loại</label>
                                 <select name="id_theloai">

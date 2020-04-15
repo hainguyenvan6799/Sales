@@ -10,13 +10,12 @@
 			<h2 class="text-center">DANH MỤC</h2>
 			<hr>
 			<br>
-			<h3>TÌM THEO</h3>
 			<div class="timsptheogia">
 				<h4>Giá sản phẩm</h4>
-				<input type="checkbox" name="timtheogia" class="timtheogia" value="5"> Giá dưới 400 000đ<br>
-				<input type="checkbox" name="timtheogia" class="timtheogia" value="6"> 400 000 - 700 000đ<br>
-				<input type="checkbox" name="timtheogia" class="timtheogia" value="7"> 700 000 - 1 000 000đ<br>
-				<input type="checkbox" name="timtheogia" class="timtheogia" value="8"> Giá trên 1 000 000đ<br>
+				<input type="checkbox" name="timtheogia" class="timtheogia" value="5"> <span class="text1">Giá dưới 400 000đ</span><br>
+				<input type="checkbox" name="timtheogia" class="timtheogia" value="6"> <span class="text1">400 000 - 700 000đ</span><br>
+				<input type="checkbox" name="timtheogia" class="timtheogia" value="7"> <span class="text1">700 000 - 1 000 000đ</span><br>
+				<input type="checkbox" name="timtheogia" class="timtheogia" value="8"> <span class="text1">Giá trên 1 000 000đ</span><br>
 			</div>
 			<div class="timsptheoloai">
 				<h4>Loại</h4>
@@ -26,10 +25,10 @@
 		</div>
 		<div class="col-md-7 right padding-top-35">
 			<span><strong>Xếp theo: </strong></span>
-			<input type="radio" name="sort" class="sort" value="1">Tên A-Z
-			<input type="radio" name="sort" class="sort" value="2">Tên Z-A
-			<input type="radio" name="sort" class="sort" value="3">Giá thấp đến cao
-			<input type="radio" name="sort" class="sort" value="4">Giá cao đến thấp
+			<input type="radio" name="sort" class="sort" value="1"> Tên A-Z
+			<input type="radio" name="sort" class="sort" value="2"> Tên Z-A
+			<input type="radio" name="sort" class="sort" value="3"> Giá thấp đến cao
+			<input type="radio" name="sort" class="sort" value="4"> Giá cao đến thấp
 			<br><hr><br>
 
 			<!-- các sản phẩm -->
@@ -64,7 +63,7 @@
 									
 									
 									<input class="hidden" type="hidden" name="variantId" value="27381674" />
-									<a class="button ajax_addtocart" href="/painmadehustlers-t-shirt-den-cam" title="Tùy chọn">Tùy chọn</a>
+									<a class="button ajax_addtocart quickview_data" id="{{$sp->id}}" href="tops/{{$sp->tenkhongdau}}" title="Tùy chọn">Tùy chọn</a>
 									
 									
 								</div>
@@ -84,6 +83,7 @@
 @endsection
 
 @section('script')
+<!--Có khai báo dòng script này để sử dụng jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script>
         // $(document).ready(function(){
@@ -107,7 +107,7 @@
         // });
 
         $(document).ready(function(){
-        	
+        	//phục vụ chức năng filter sản phẩm theo tên, theo giá
         		var action = "fetch_data";
         		var radioValue = 0;
         		
@@ -115,6 +115,13 @@
         		checkboxValue = 0;
         		$('.sort').click(function(){
         			radioValue = $("input[name='sort']:checked").val();
+        			// for(var i = 0; i < $('.sort').length; i++)
+        			// {
+        			// 	if($('.sort')[i].val() == radioValue)
+        			// 	{
+        			// 		$('.sort')[i].css("color","green");
+        			// 	}
+        			// }
         			//alert(radioValue);
         			$.ajax({
         			url:"tops",

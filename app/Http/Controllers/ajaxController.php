@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\DB;
 class ajaxController extends Controller
 {
     //
+
     public function getLoaisanpham($idtheloai){
     	$loaisanpham = loaisanpham::where('id_theloai', $idtheloai)->get();
     	foreach($loaisanpham as $lsp)
@@ -235,7 +236,7 @@ class ajaxController extends Controller
 									
 									
 									<input class="hidden" type="hidden" name="variantId" value="27381674" />
-									<a class="button ajax_addtocart" href="/painmadehustlers-t-shirt-den-cam" title="Tùy chọn">Tùy chọn</a>
+									<a class="button ajax_addtocart" href="tops/'.$sp->tensanpham.'" title="Tùy chọn">Tùy chọn</a>
 									
 									
 								</div>
@@ -245,4 +246,51 @@ class ajaxController extends Controller
 					<!-- sanpham 1 -->';
     	}
 	}
+
+    public function kiemtrasoluong($idsp, $sizevalue)
+    {
+        $sanpham = sanpham::find($idsp);
+        if($sanpham->soluong > 0 && $sanpham->size == $sizevalue)
+        {
+            echo '<h4>Con hang.</h4>';
+        }
+        else
+        {
+            echo '<h4>Het hang.</h4>';
+        }
+    }
+
+    public function giohang($idsp){
+        if(count(session()->get('giohang')) == 0)
+        {
+            session()->push('giohang', $idsp);
+            
+        }
+        else
+        {
+             for($i = 0; $i < count(session()->get('giohang')); $i++)
+            {
+                if($idsp == session()->get('giohang')[$i])
+                
+            }
+            session()->push('giohang', $idsp);
+        }
+        $values = session()->get('giohang');
+        for($i = 0; $i < count(session()->get('giohang')); $i++)
+        {
+            $sanpham = sanpham::find($values[$i]);
+            echo $sanpham->tensanpham;
+            echo '&nbsp;&nbsp;';
+            echo '<a href="xoakhoigiohang/'.$values[$i].'">X</a>';
+        }
+        
+        
+        
+    }
+    public function xoakhoigiohang($idsp)
+    {
+        session()->pull('giohang', $idsp);
+        return redirect('trangchu');
+    }
+
 }

@@ -15,7 +15,7 @@
 					<img src="images/theloai/{{$tl->hinhdaidien}}" alt="Tops [ Áo thun ]" class="img-responsive center-block" />
 					<div class="evo-banner-content">
 						<h3>{{$tl->tentheloai}}</h3>
-						<a href="https://iron-fever.vn/ao-thun" title="Xem thêm">Xem thêm</a>
+						<a href="{{$tl->tenkhongdau}}" title="Xem thêm">Xem thêm</a>
 					</div>
 				</div>
 			</div>
