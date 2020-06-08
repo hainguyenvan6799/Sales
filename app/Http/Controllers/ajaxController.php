@@ -202,7 +202,7 @@ class ajaxController extends Controller
     		
     	 	
     	 }
-    	 // echo $sql;
+
     	$sanpham = DB::select($sql);
     	foreach($sanpham as $sp)
     	{
@@ -270,7 +270,7 @@ class ajaxController extends Controller
         {
              for($i = 0; $i < count(session()->get('giohang')); $i++)
             {
-                if($idsp == session()->get('giohang')[$i])
+                if($idsp == session()->get('giohang')[$i]);
                 
             }
             session()->push('giohang', $idsp);
@@ -292,5 +292,6 @@ class ajaxController extends Controller
         session()->pull('giohang', $idsp);
         return redirect('trangchu');
     }
+
 
 }

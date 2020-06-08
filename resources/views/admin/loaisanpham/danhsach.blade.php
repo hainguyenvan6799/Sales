@@ -5,8 +5,8 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-lg-12">
-                        <h1 class="page-header">Loại sản phẩm
-                            <small>Danh sách</small>
+                        <h1 class="page-header">Loại dịch vụ
+                            <small>Danh sách các loại dịch vụ</small>
                         </h1>
                     </div>
                     <!-- /.col-lg-12 -->
@@ -26,13 +26,12 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach($loaisanpham as $lsp)
+                            @foreach($loaidichvu as $ldv)
                             <tr class="odd gradeX" align="center">
-                                <td>{{$lsp->id}}</td>
-                                <td>{{$lsp->tenloaisanpham}}</td>
-                                <td>{{$lsp->theloai->tentheloai}}</td>
-                                <td class="center"><i class="fa fa-trash-o  fa-fw"></i><a href="admin/loaisanpham/xoa/{{$lsp->id}}"> Delete</a></td>
-                                <td class="center"><i class="fa fa-pencil fa-fw"></i> <a href="admin/loaisanpham/sua/{{$lsp->id}}">Edit</a></td>
+                                <td>{{$ldv->id}}</td>
+                                <td>{{$ldv->tenloai}}</td>
+                                <td class="center"><i class="fa fa-trash-o  fa-fw"></i><a href="admin/loaisanpham/xoa/{{$ldv->id}}"> Delete</a></td>
+                                <td class="center"><i class="fa fa-pencil fa-fw"></i> <a href="admin/loaisanpham/sua/{{$ldv->id}}">Edit</a></td>
                             </tr>
                             @endforeach
                         </tbody>

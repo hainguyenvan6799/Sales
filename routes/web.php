@@ -12,8 +12,12 @@
 */
 use App\theloai;
 use App\sanpham;
+use App\ShowAttr;
+
 $theloai = theloai::all();
 $sanpham = sanpham::all();
+$ShowAttr = ShowAttr::all();
+
 session()->put('giohang');
 session()->put('soluongsanphamtronggiohang');
 
@@ -25,7 +29,7 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 //trang chu
-Route::view('trangchu','pages.trangchu', ['theloai'=>$theloai]);
+Route::view('trangchu','pages.trangchu', ['theloai'=>$theloai, 'ShowAttr'=>$ShowAttr, 'sanpham'=>$sanpham]);
 
 
 //đăng ký, đăng nhập
@@ -96,7 +100,7 @@ Route::view('aothun', 'pages.tops', ['sanpham'=>$sanpham]);
 
 Route::get('test', 'ajaxController@test');
 
-Route::get('tops', 'ajaxController@filter_data');
+Route::get('/tops', 'ajaxController@filter_data');
 
 Route::get('tops/{tenspkhongdau}', 'sanphamController@detail_product');
 

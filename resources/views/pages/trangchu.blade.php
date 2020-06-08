@@ -42,6 +42,25 @@
 			</div> --}}
 			
 		</div>
+
+		<div class="row">
+			@foreach($sanpham as $sp)
+				<div class="col-sm-4 col-xs-12 evo-margin">
+					<div class="evo-banner">
+						@foreach($ShowAttr as $attr)
+						
+							@if($attr->tenthuoctinh == 'tensanpham' && $attr->chophep == 1)
+								<h3>{{$sp->tensanpham}}</h3>
+							@elseif($attr->tenthuoctinh == 'tenkhongdau' && $attr->chophep == 1)
+								<h3>{{$sp->tenkhongdau}}</h3>
+							@elseif($attr->tenthuoctinh == 'gia' && $attr->chophep == 1)
+								<h3>{{$sp->gia}}</h3>
+							@endif
+						@endforeach
+					</div>
+				</div>
+			@endforeach
+		</div>
 	</div>
 </div>
 </section>
